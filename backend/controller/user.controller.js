@@ -91,7 +91,7 @@ export const login = async (req, res) =>{
 
         await User.updateOne({ _id : user._id}, { token });
 
-        res.json({token});
+        res.json({token : token});
 
 
     } catch (err) {

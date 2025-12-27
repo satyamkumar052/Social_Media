@@ -1,3 +1,5 @@
+import { configureStore } from "@reduxjs/toolkit";
+import authReducer from "./reducer/authReducer";
 
 
 
@@ -11,9 +13,10 @@ Register here => Reducer
 
 */
 
-import { configureStore } from "@reduxjs/toolkit";
 
 
 export const store = configureStore({
-    reducer:{}
+    reducer:{
+        auth : authReducer
+    }
 })
