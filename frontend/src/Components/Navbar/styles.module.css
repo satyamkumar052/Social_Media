@@ -1,0 +1,33 @@
+.container {
+    padding: 1.1rem 1.2rem 0 1.2rem;
+    border-bottom: 1px solid rgb(196, 192, 192);
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar h1 img {
+    height: 4rem;
+    padding-left: 4rem;
+    cursor: pointer;
+}
+
+.navbarOptionContainer {
+    display: flex;
+}
+
+.buttonJoin {
+    background: #CD8987;
+    border-radius: 10px;
+    padding-block: 0.6rem;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding-block: 0.6rem;
+    padding-inline: 0.6rem;
+    user-select: none;
+    cursor: pointer;
+}
