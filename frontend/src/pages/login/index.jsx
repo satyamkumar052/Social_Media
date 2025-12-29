@@ -72,17 +72,17 @@ function login() {
                             } else {
                                 handleRegister();
                             }
-                        }} className={`btn btn-primary ${styles.buttonWithOutline} `}>Submit</div>
+                        }} className={styles.buttonWithOutline}>Submit</div>
                     </div>
 
                 </div>
 
                 <div className={styles.cardContainer_right}>
-                        { userLoginMethod ? <p>Dont have an Account?</p> : <p>Already have an Account?</p> }
+                        { userLoginMethod ? <p>Don't have an Account?</p> : <p>Already have an Account?</p> }
                         
                         <div onClick={() => {
                             setUserLoginMethod(!userLoginMethod)
-                        }} style={{maxWidth:"15rem"}} className={`btn btn-light ${styles.buttonWithOutline}`}>
+                        }} style={{maxWidth:"15rem", color:"#000", backgroundColor:"snow"}} className={styles.buttonWithOutline}>
                             {userLoginMethod ? "Sign Up" : "Sign In"}
                         </div>
 

@@ -48,3 +48,41 @@ export const registerUser = createAsyncThunk(
 
     }
 )
+
+
+export const getAboutUser = createAsyncThunk(
+    "user/getAboutUser",
+    async (user, thunkAPI) => {
+
+        try {
+            
+            const response = await clientServer.get("/get_user_and_profile", {
+                params : {
+                    token : user.token,
+                },
+            })
+
+            return thunkAPI.fulfillWithValue(response.data);
+
+        } catch (err) {
+            return thunkAPI.rejectWithValue(err.response.data);
+        }
+    }
+)
+
+
+export const getAllUsers = createAsyncThunk(
+    "user/getAllUsers",
+    async(user, thunkAPI) => {
+
+        try {
+
+            const response = await clientServer.get("/user/get_all_users");
+
+            return thunkAPI.fulfillWithValue(response.data);
+            
+        } catch (err) {
+            return thunkAPI.rejectWithValue(err.response.data);
+        }
+    }
+)

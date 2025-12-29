@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loginUser, registerUser } from "../../action/authAction";
+import { getAboutUser, getAllUsers, loginUser, registerUser } from "../../action/authAction";
 
 
 
@@ -10,9 +10,12 @@ const initialState = {
     isLoading : false,
     LoggedIn : false,
     message : "",
+    isTokenThere : false,
     profileFetched : false,
     connections : [],
-    connectionRequest : []
+    connectionRequest : [],
+    all_users : [],
+    all_profiles_fetched : false,
 }
 
 
@@ -26,6 +29,12 @@ const authSlice = createSlice({
         },
         emptyMessage: (state) => {
             state.message = ""
+        },
+        setTokenIsThere : (state) => {
+            state.isTokenThere = true
+        },
+        setTokenIsNotThere : (state) => {
+            state.isTokenThere = false
         }
     },
     
@@ -56,7 +65,7 @@ const authSlice = createSlice({
                 state.isLoading = false;
                 state.isError = false;
                 state.isSuccess = true;
-                state.LoggedIn = true;
+                state.LoggedIn = false;
                 state.message = { message : "Registration is Succesful, Please Login"};
             })
             .addCase(registerUser.rejected, (state, action) => {
@@ -64,11 +73,23 @@ const authSlice = createSlice({
                 state.isError = true;
                 state.message = action.payload;
             })
+            .addCase(getAboutUser.fulfilled, (state, action) => {
+                state.user = action.payload.userProfile;
+                state.isError = false;
+                state.isLoading = false;
+                state.profileFetched = true;
+            })
+            .addCase(getAllUsers.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.isError = false;
+                state.all_profiles_fetched = true;
+                state.all_users = action.payload.profiles;
+            })
             
     }
 
 });
 
-export const {reset, emptyMessage} = authSlice.actions;
+export const { reset, emptyMessage, setTokenIsThere, setTokenIsNotThere } = authSlice.actions;
 
 export default authSlice.reducer;

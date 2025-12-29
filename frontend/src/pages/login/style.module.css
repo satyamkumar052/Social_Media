@@ -52,6 +52,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #0D6EFD;
+    padding-block: 0.6rem;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+}
+
+.buttonWithOutline:hover {
+    opacity: 0.85;
 }
 
 
@@ -64,6 +73,10 @@
     color: #fff;
     flex-direction: column;
     padding-inline: 1.2rem;
+}
+
+.cardContainer_right > div {
+    margin-top: 1.2rem;
 }
 
 

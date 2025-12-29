@@ -1,7 +1,6 @@
 import { store } from "@/config/redux/store";
 import "@/styles/globals.css";
 import { Provider } from "react-redux";
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 export default function App({ Component, pageProps }) {

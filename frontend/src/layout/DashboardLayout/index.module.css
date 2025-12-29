@@ -1,0 +1,40 @@
+.homeContainer {
+    display: flex;
+    margin-top: 1rem;
+}
+
+.homeContainer > div:nth-child(odd) {
+    flex: 0.2;
+}
+
+.homeContainer > div:nth-child(even) {
+    flex: 0.6;
+}
+
+.homeContainer_leftBar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebarOption {
+    display: flex;
+    align-items: start;
+    font-size: 1.3rem;
+    gap: 1.3rem;
+    width: 80%;
+    max-width: 80%;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.sidebarOption:hover {
+    transform: scale(1.03);
+}
+
+.sidebarOption > svg {
+    height: 1.2em;
+}
