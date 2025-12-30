@@ -22,7 +22,7 @@ export const createPost = async (req, res) => {
         }
 
         const post = new Post({
-            userId: user.Lid,
+            userId: user._id,
             body: req.body.body,
             media: req.file != undefined ? req.file.filename : "",
             fileType: req.file != undefined ? req.file.mimetype.split("/")[1] : ""
@@ -53,7 +53,7 @@ export const deletePost = async (req, res) => {
     const { token, post_id} = req.body;
 
     try {
-        const user = await User.findone({ token: token }).select("_id");
+        const user = await User.findOne({ token: token }).select("_id");
         
         if (!user) {
             return res.status(404).json({ message: "User not found" });

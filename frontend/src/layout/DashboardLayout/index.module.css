@@ -16,7 +16,7 @@
     flex-direction: column;
     gap: 1.4rem;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
 }
 
 .sidebarOption {
@@ -36,5 +36,6 @@
 }
 
 .sidebarOption > svg {
+    min-width: fit-content;
     height: 1.2em;
 }

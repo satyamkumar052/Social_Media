@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAllPosts } from "../../action/postAction";
+import { createPost, getAllPosts } from "../../action/postAction";
 
 
 
@@ -38,7 +38,7 @@ const postSlice = createSlice({
                 state.isLoading = false;
                 state.isError = true;
                 state.postFetched = true;
-                state.posts = action.payload.posts;
+                state.posts = action.payload.posts.reverse();
             })
             .addCase(getAllPosts.rejected, (state,action) => {
                 state.isLoading = false;
