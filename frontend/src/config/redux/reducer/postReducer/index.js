@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createPost, getAllPosts } from "../../action/postAction";
+import { createPost, getAllComments, getAllPosts } from "../../action/postAction";
 
 
 
@@ -36,7 +36,7 @@ const postSlice = createSlice({
             })
             .addCase(getAllPosts.fulfilled, (state, action) => {
                 state.isLoading = false;
-                state.isError = true;
+                state.isError = false;
                 state.postFetched = true;
                 state.posts = action.payload.posts.reverse();
             })
@@ -45,9 +45,17 @@ const postSlice = createSlice({
                 state.isError = true;
                 state.message = action.payload;
             })
+            .addCase(getAllComments.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.isError = false;
+                state.postId = action.payload.post_id;
+                state.comments = action.payload.comments;
+            })
 
     }
 })
 
+
+export const { resetPostId } = postSlice.actions;
 
 export default postSlice.reducer;

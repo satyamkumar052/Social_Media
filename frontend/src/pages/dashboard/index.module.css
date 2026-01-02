@@ -112,3 +112,87 @@
     object-fit: cover;
 }
 
+.optionContainer {
+    display: flex;
+    height: 20%;
+    width: 100%;
+    justify-content: space-between;
+    padding-block: 0.6rem;
+}
+
+.singleOption_optionContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+}
+
+.singleOption_optionContainer > svg {
+    height: 100%;
+    width: 15%;
+    cursor: pointer;
+}
+
+
+.commentContainer {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background: rgb(0,0,0,0.7);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.allCommentContainer {
+    width: 40vw;
+    height: 80vh;
+    background-color: white;
+    border-radius: 10px;
+    position: relative;
+    padding: 1.4rem;
+    
+}
+
+.postCommentContainer {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    bottom: 1.2rem;
+    left: 1.2rem;
+    gap: 1.2rem;
+}
+
+.postCommentContainer > input {
+    flex: 0.9;
+    padding-inline: 1.5rem;
+    padding-block: 1.2rem;
+    border: none;
+    background-color: rgb(228, 228, 228);
+    border-radius: 10px;
+
+}
+
+.postCommentContainer > input:focus {
+    outline: none;
+}
+
+.postCommentConatiner_commentBtn {
+    flex: 0.1;
+    width: fit-content;
+    padding: 1.2rem;
+    background-color: #FFC107;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+    font-weight: 600;
+
+}
