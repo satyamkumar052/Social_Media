@@ -9,33 +9,115 @@ import fs from "fs";
 
 
 const convertUserDataToPDF = async (userData) => {
-
-    const doc = new PDFDownload();
+    const doc = new PDFDownload({ margin: 50 });
 
     const outputPath = crypto.randomBytes(32).toString("hex") + ".pdf";
     const stream = fs.createWriteStream("uploads/" + outputPath);
 
     doc.pipe(stream);
 
-    doc.image(`uploads/${userData.userId.profilePicture}`, {align: "center", width: 100})
-    doc.fontSize(14).text(`Name: ${userData.userId.name}`);
-    doc.fontSize(14).text(`Username: ${userData.userId.username}`);
-    doc.fontSize(14).text(`Email: ${userData.userId.email}`);
-    doc.fontSize(14).text(`Bio: ${userData.bio}`);
-    doc.fontSize(14).text(`Current Position: ${userData.currentPosition}`);
+    // ===== HEADER =====
+    if (userData.userId.profilePicture) {
+        doc.image(`uploads/${userData.userId.profilePicture}`, 50, 50, {
+            width: 80,
+            height: 80
+        });
+    }
 
-    doc.fontSize(14).text("Past Work: ")
-    userData.pastWork.forEach((work, index) => {
-        doc.fontSize(14).text(`Company Name: ${work.company}`);
-        doc.fontSize(14).text(`Position: ${work.position}`);
-        doc.fontSize(14).text(`Years: ${work.years}`);
+    doc
+        .fontSize(22)
+        .font("Helvetica-Bold")
+        .text(userData.userId.name, 150, 50);
+
+    doc
+        .fontSize(12)
+        .font("Helvetica")
+        .text(userData.currentPosition, 150, 80);
+
+    doc
+        .fontSize(10)
+        .fillColor("gray")
+        .text(
+            `${userData.userId.email} | @${userData.userId.username}`,
+            150,
+            100
+        );
+
+    doc.moveDown(3);
+    doc.fillColor("black");
+
+    // ===== PROFILE =====
+    doc
+        .fontSize(14)
+        .font("Helvetica-Bold")
+        .text("Profile");
+
+    doc
+        .moveDown(0.5)
+        .fontSize(11)
+        .font("Helvetica")
+        .text(userData.bio, { align: "justify" });
+
+    doc.moveDown(1.5);
+
+    // ===== EXPERIENCE =====
+    doc
+        .fontSize(14)
+        .font("Helvetica-Bold")
+        .text("Experience");
+
+    doc.moveDown(0.5);
+
+    userData.pastWork.forEach((work) => {
+        doc
+            .fontSize(12)
+            .font("Helvetica-Bold")
+            .text(work.position);
+
+        doc
+            .fontSize(11)
+            .font("Helvetica")
+            .fillColor("gray")
+            .text(`${work.company} | ${work.years}`);
+
+        doc.moveDown(0.8);
+        doc.fillColor("black");
     });
 
     doc.end();
 
     return outputPath;
+};
 
-}
+
+// const convertUserDataToPDF = async (userData) => {
+
+//     const doc = new PDFDownload();
+
+//     const outputPath = crypto.randomBytes(32).toString("hex") + ".pdf";
+//     const stream = fs.createWriteStream("uploads/" + outputPath);
+
+//     doc.pipe(stream);
+
+//     doc.image(`uploads/${userData.userId.profilePicture}`, {align: "center", width: 100})
+//     doc.fontSize(14).text(`Name: ${userData.userId.name}`);
+//     doc.fontSize(14).text(`Username: ${userData.userId.username}`);
+//     doc.fontSize(14).text(`Email: ${userData.userId.email}`);
+//     doc.fontSize(14).text(`Bio: ${userData.bio}`);
+//     doc.fontSize(14).text(`Current Position: ${userData.currentPosition}`);
+
+//     doc.fontSize(14).text("Past Work: ")
+//     userData.pastWork.forEach((work, index) => {
+//         doc.fontSize(14).text(`Company Name: ${work.company}`);
+//         doc.fontSize(14).text(`Position: ${work.position}`);
+//         doc.fontSize(14).text(`Years: ${work.years}`);
+//     });
+
+//     doc.end();
+
+//     return outputPath;
+
+// }
 
 
 export const register = async (req, res) => {
