@@ -200,7 +200,7 @@ export const getAllUserProfile = async (req, res) => {
         return res.json({ profiles });
 
     } catch (err) {
-        return res.status(500).json({ message: error.message })
+        return res.status(500).json({ message: err.message })
     }
 };
 
@@ -222,7 +222,7 @@ export const downloadProfile = async (req, res) => {
 
 export const sendConnectionRequest = async (req, res) => {
 
-    const {token, connectionId}= req.body;
+    const { token, connectionId } = req.body;
     try {
 
         const user = await User.findOne({token});
@@ -257,7 +257,7 @@ export const sendConnectionRequest = async (req, res) => {
 
 export const getMyConnectionsRequests = async (req, res) => {
 
-    const { token } = req.body;
+    const { token } = req.query;
 
     try {
 
@@ -336,3 +336,27 @@ export const acceptConnectionRequest = async (req, res) => {
         return res.status(500).json({ message: err.message });
     }
 };
+
+
+export const getUserProfileAndUserBasedOnUsername = async (req, res) => {
+
+    const { username } = req.query;
+
+    try {
+        
+        const user = await User.findOne({ username : username });
+
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        const userprofile = await Profile.findOne({ userId : user._id })
+        .populate("userId", "name username email profilePicture");
+
+        return res.json({ "profile" : userprofile });
+
+
+    } catch (err) {
+        return res.status(500).json({ message: err.message });
+    }
+}

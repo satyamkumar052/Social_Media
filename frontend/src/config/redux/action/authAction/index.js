@@ -86,3 +86,94 @@ export const getAllUsers = createAsyncThunk(
         }
     }
 )
+
+
+export const sendConnectionRequest = createAsyncThunk(
+    "user/sendConnectionRequest",
+    async(user, thunkAPI) => {
+
+        try {
+
+            const response = await clientServer.post("/user/send_connection_request", {
+                token : localStorage.getItem("token"),
+                connectionId : user.connectionId
+            })
+
+            thunkAPI.dispatch(getConnectionRequest({token:user.token}));
+
+            return thunkAPI.fulfillWithValue(response.data);
+            
+        } catch (err) {
+            return thunkAPI.rejectWithValue(err.response.data);
+        }
+        
+    }
+)
+
+// maine kisko request bheja
+export const getConnectionRequest = createAsyncThunk(
+    "user/getConnectionRequest",
+    async(user, thunkAPI) => {
+        try {
+
+            const response = await clientServer.get("/user/get_connection_requests", {
+                params : {
+                    token : user.token
+                }
+            })
+
+
+            return thunkAPI.fulfillWithValue(response.data.connections);
+            
+        } catch (err) {
+            return thunkAPI.rejectWithValue(err.response.data.message);
+        }
+    }
+) 
+
+
+// kisne muje request bheja
+export const getMyConnectionsRequests = createAsyncThunk(
+    "user/getMyConnectionsRequests",
+    async(user, thunkAPI) => {
+
+        try {
+
+            const response = await clientServer.get("/user/user_connection_request", {
+                params:{
+                    token : user.token
+                }
+            })
+
+            return thunkAPI.fulfillWithValue(response.data.connections);
+            
+        } catch (err) {
+            return thunkAPI.rejectWithValue(err.response.data.message);
+        }
+
+    }
+)
+
+
+
+// accept connection
+export const AcceptConnection = createAsyncThunk(
+    "user/AcceptConnection",
+    async(user, thunkAPI) => {
+        try {
+
+            const response = await clientServer.post("/user/accept_connection_request", {
+                token : user.token,
+                requestId : user.connectionId,
+                action_type : user.action
+            })
+
+            return thunkAPI.fulfillWithValue(response.data);
+            
+        } catch (err) {
+            return thunkAPI.rejectWithValue(err.response.data.message);
+        }
+    }
+)
+
+

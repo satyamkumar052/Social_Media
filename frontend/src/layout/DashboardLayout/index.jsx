@@ -18,7 +18,7 @@ function DashboardLayout({children}) {
             router.push("/login")
         }
         dispatch(setTokenIsThere());
-    })
+    },[])
 
     return (
 
@@ -53,17 +53,17 @@ function DashboardLayout({children}) {
 
                 </div>
 
-                <div className="homeContainer_feedContainer">{children}</div>
+                <div className={styles.homeContainer_feedContainer}>{children}</div>
 
-                <div className="homeContainer_extraContainer">
+                <div className={styles.homeContainer_extraContainer}>
                     <h3>Top Profiles</h3>
 
-                    {authState.all_profiles_fetched && authState.all_users.map((profile) => {
-
+                    {authState.all_profiles_fetched && authState.all_users.map((profile, index) => {
+                        // profile.userId.name
                         return (
                             <div key={profile._id}>
                                 <div>
-                                    <p style={{padding:"1rem"}}>{profile.userId.name}</p>
+                                    <p style={{padding:"1rem"}}>{profile.userId?.name}</p>
                                 </div><hr />
                             </div>
                         )
