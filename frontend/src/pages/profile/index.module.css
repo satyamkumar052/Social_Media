@@ -45,6 +45,17 @@
     display: flex;
 }
 
+.card_profileContainer {
+    display: flex;
+}
+
+.card_profileContainer > img {
+    width: 3.4rem;
+    height: auto;
+    height: 3.4rem;
+    object-fit: cover;
+}
+
 .card_profileContainer > img {
     width: 3.4rem;
     height: auto;

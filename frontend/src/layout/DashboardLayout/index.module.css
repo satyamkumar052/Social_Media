@@ -49,3 +49,46 @@
 .homeContainer_feedContainer {
     padding-inline: 1rem;
 }
+
+
+.mobileNavbarView {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 99vw;
+    height: 6vh;
+    display: none;
+    justify-content: space-around;
+    background: white;
+    align-items: center;
+    z-index: 10;
+}
+
+.mobileNavbarView svg {
+    height: 2rem;
+    width: 2rem;
+}
+
+
+@media only screen and (max-width : 600px) {
+    .homeContainer_extraContainer {
+        display: none;
+    }
+
+    .homeContainer {
+        display: block;
+    }
+
+    .homeContainer_leftBar {
+        display: none;
+    }
+
+    .mobileNavbarView {
+        display: flex;
+        border-top: 1px solid silver;
+    }
+
+    .homeContainer_feedContainer {
+        padding-bottom: 8vh;
+    }
+}

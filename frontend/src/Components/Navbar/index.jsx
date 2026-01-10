@@ -18,7 +18,7 @@ function Navbar() {
         <nav className={styles.navbar}>
 
             <h1 onClick={() => {
-                    router.push("/")
+                    router.push("/dashboard")
                 }}><img src="/images/netwiselogo.png" alt="logo" /></h1>
 
             <div className={styles.navbarOptionContainer}>

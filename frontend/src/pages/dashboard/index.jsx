@@ -100,7 +100,7 @@ function dashboard() {
 
 
                                         <div className={styles.singleCard_image}>
-                                            <img src={`${BASE_URL}/${post.media}`} alt="" />
+                                            { post.media !== "" ? <img src={`${BASE_URL}/${post.media}`} alt="" /> : <></>}
                                         </div>
 
 
@@ -166,16 +166,16 @@ function dashboard() {
                     {postState.comments.length !==0 && 
 
                      //  how a single comment has to be displayed
-                        <div>   
+                        <div className={styles.commentList}>   
                             
                             {postState.comments.map((comment, index) => {
                                 return (
 
-                                    <div className={styles.singleComment} key={comment._id}>
+                                    <div style={{paddingBlock:"0.8rem"}} className={styles.singleComment} key={comment._id}>
                                         <div className={styles.singleComment_profileContainer}>
                                             {/* <img src={`${BASE_URL}/${comment.userId.profilePicture}`} /> */}
                                             <div>
-                                                <p>{comment.userId.name}</p>
+                                                <p style={{fontWeight:"bold"}}>{comment.userId.name}</p>
                                                 <p>@{comment.userId.username}</p>
                                             </div>
                                         </div>

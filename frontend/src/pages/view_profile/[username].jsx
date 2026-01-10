@@ -82,7 +82,7 @@ function ViewProfilePage({userProfile}) {
 
                     <div className={styles.profileContainer_details}>
 
-                        <div style={{ display:"flex", gap:"0.7rem" }}>
+                        <div className={styles.profileContainer_flex}>
 
                             <div style={{flex:"0.8"}}>
                                 
@@ -134,7 +134,7 @@ function ViewProfilePage({userProfile}) {
 
                                                         {post.media !== "" ? <img src={`${BASE_URL}/${post.media}`} /> 
                                                          :
-                                                         <div style={{width:"3.4rem", height:"3.4rem"}}></div>
+                                                         <div style={{width:"3.4rem", height:"3.4rem", display:"flex",justifyContent:"center",alignItems:"center"}}>NA</div>
                                                         }
 
                                                     </div>

@@ -7,7 +7,7 @@
 }
 
 .cardContainer {
-    height: 80vh;
+    height: 75vh;
     display: flex;
     border-radius: 0.8rem;
     overflow: hidden;
@@ -87,4 +87,10 @@
     border-radius: 10px;
     border: 1px solid rgb(134, 132, 132);
     width: 100%;
+}
+
+@media screen and (max-width:600px) {
+    .cardContainer {
+        flex-direction: column;
+    }
 }

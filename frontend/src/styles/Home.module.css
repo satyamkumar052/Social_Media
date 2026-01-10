@@ -72,3 +72,26 @@
     padding-block: 0.8rem;
     border-radius: 20px;
 }
+
+
+@media screen and (max-width:600px) {
+    .maincontainer {
+        flex-direction: column;
+        height: auto;
+        gap: 2rem;
+        padding-top: 1.2rem;
+    }
+
+    .mainContainer_left {
+        padding-top: 1.5rem;
+        flex : 1;
+    }
+
+    .mainContainer_right {
+        flex : 1;
+    }
+
+    .mainContainer_right img {
+        width: 100%;
+    }
+}
