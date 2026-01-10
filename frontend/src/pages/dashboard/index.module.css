@@ -131,6 +131,7 @@
     height: 100%;
     width: 15%;
     cursor: pointer;
+    min-width: 1rem;
 }
 
 

@@ -1,0 +1,206 @@
+.container {
+    padding: 1.3rem;
+    background-color: rgb(247, 245, 245);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.backDropContainer {
+    width: 100%;
+    height: 30vh;
+    background: url("https://content.pexels.com/images/canva/ai-generated-ad/off-theme/forest-full.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    border-radius: 20px;
+        
+}
+
+.backDropContainer img {
+    width: 10em;
+    height: 10em;
+    object-fit: cover;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -30%;
+    left: 8%;
+    text-align: center;
+    z-index: 3;
+}
+
+.profileContainer_details {
+    padding-top: 6.6rem;
+}
+
+
+.card {
+    display: flex;
+    align-items: center;
+    gap: 1.4rem;
+}
+
+.card_profileContainer {
+    display: flex;
+}
+
+.card_profileContainer > img {
+    width: 3.4rem;
+    height: auto;
+    height: 3.4rem;
+    object-fit: cover;
+}
+
+.backDrop_overlay {
+    width: 10em;
+    height: 10em;
+    object-fit: cover;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -30%;
+    left: 8%;
+    text-align: center;
+    z-index: 4;
+    transition: all linear 0.3s;
+    cursor: pointer;
+    color: white;
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.backDrop_overlay:hover {
+    background: black;
+    opacity: 0.4;
+    
+}
+
+.connectBtn {
+    padding-inline: 0.8rem;
+    padding-block: 0.3rem;
+    background-color: rgba(3,93,183,0.905);
+    outline: none;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.connectedButton {
+    padding-inline: 0.8rem;
+    padding-block: 0.3rem;
+    border: 1px solid ;
+    outline: none;
+    color: rgba(3, 93, 183, 0.905);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+.workHistoryContainer {
+    display: flex;
+    gap: 1.4rem;
+    padding-top: 1.4rem;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.workHistoryCard {
+    min-width: fit-content;
+    padding-inline: 2.5rem;
+    padding-block: 1rem;
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px rgb(216, 216, 216);
+}
+
+.profileContainer_details input {
+    outline: none;
+    border-style: none;
+    padding-inline: 10px;
+    padding-block: 9px;
+    background-color: transparent;
+    width: fit-content;
+}
+
+.nameEdit {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.updateProfileBtn {
+    padding-inline: 0.8rem;
+    padding-block: 0.3rem;
+    background-color: #a96300;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    width: fit-content;
+    animation: shake 0.5s ease-in 1;
+}
+
+@keyframes shake {
+    0% {transform: translateX(0);}
+    20% {transform: translateX(-4px);}
+    40% {transform: translateX(4px);}
+    60% {transform: translateX(-3px);}
+    80% {transform: translateX(3px);}
+    100% {transform: translateX(0);}
+}
+
+
+.profileContainer_details textarea {
+    outline: none;
+    border: none;
+    padding-inline: 10px;
+    padding-block: 9px;
+    font-size: 1.1rem;
+}
+
+.addWorkButton {
+    height: fit-content;
+    font-weight: bold;
+    padding-inline: 1.3rem;
+    background: white;
+    padding-block: 1.2rem;
+    border: 1px dotted silver;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.commentContainer {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 4;
+    background: rgb(0,0,0,0.7);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.allCommentContainer {
+    width: 40vw;
+    height: fit-content;
+    background-color: white;
+    border-radius: 10px;
+    position: relative;
+    padding: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.inputField {
+    padding-inline: 1.3rem;
+    padding-block: 0.8rem;
+    outline: none;
+    border-radius: 10px;
+    border: 1px solid rgb(134, 132, 132);
+    width: 100%;
+}

@@ -364,7 +364,7 @@ export const getMyConnectionsRequests = async (req, res) => {
 
 export const whatAreMyConnections = async (req, res) => {
 
-    const { token } = req.body;
+    const { token } = req.query;
 
     try {
 
@@ -375,7 +375,7 @@ export const whatAreMyConnections = async (req, res) => {
         const connections = await ConnectionRequest.find({ connectionId:user._id })
         .populate("userId", "name username email profilePicture");;
 
-        res.json({connections});
+        return res.json(connections);
 
     } catch (err) {
         return res.status(500).json({ message: err.message })

@@ -7,7 +7,7 @@ import styles from "./index.module.css";
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllPosts } from '@/config/redux/action/postAction';
-import { getConnectionRequest, sendConnectionRequest } from '@/config/redux/action/authAction';
+import { getConnectionRequest, getMyConnectionsRequests, sendConnectionRequest } from '@/config/redux/action/authAction';
 
 
 function ViewProfilePage({userProfile}) {
@@ -30,6 +30,7 @@ function ViewProfilePage({userProfile}) {
     const getUsersPost = async () => {
         await dispatch(getAllPosts());      // to show recent activity
         await dispatch(getConnectionRequest({token:localStorage.getItem("token")}));      // to show text on button (connect or connected)
+        await dispatch(getMyConnectionsRequests({token:localStorage.getItem("token")}));
     }
 
     useEffect(() => {
@@ -57,7 +58,15 @@ function ViewProfilePage({userProfile}) {
                 setIsConnectionNull(false);
             }
         }
-    }, [authState.connections])
+        
+        if (authState.connectionRequest.some(user => user.userId._id === userProfile.userId._id)) {
+            setIsCurrentUserInConnection(true)
+            if(authState.connectionRequest.find(user => user.userId._id === userProfile.userId._id).status_accepted === true) {
+                setIsConnectionNull(false);
+            }
+        }
+
+    }, [authState.connections, authState.connectionRequest])
 
 
     
