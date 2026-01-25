@@ -59,7 +59,7 @@ function login() {
 
                     <div className={styles.inputContainers}>
 
-                        { !userLoginMethod && <div className={styles.inputRow}>
+                        { userLoginMethod && <div className={styles.inputRow}>
                             <input onChange={(e) => setUsername(e.target.value)} className={styles.inputField} type="text" placeholder='Username' />
                             <input onChange={(e) => setName(e.target.value)} className={styles.inputField} type="text" placeholder='Name' />
                         </div>}
