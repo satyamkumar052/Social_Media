@@ -22,11 +22,11 @@ const PostSchema = mongoose.Schema({
         type:Date,
         default:Date.now()
     },
-    media:{
+    media: {
         type: String,
         default:""
     },
-    active:{
+    active: {
         type: Boolean,
         default: true
     },
