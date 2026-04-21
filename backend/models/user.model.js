@@ -2,16 +2,16 @@ import mongoose, { Schema } from "mongoose";
 
 
 const UserSchema = new mongoose.Schema({
-    name : {
+    name: {
         type: String,
         required: true
     },
-    username : {
+    username: {
         type: String,
         required: true,
         unique: true
     },
-    email : {
+    email: {
         type: String,
         required: true,
         unique: true
@@ -36,7 +36,7 @@ const UserSchema = new mongoose.Schema({
         type:Date,
         default:Date.now()
     },
-    token : {
+    token: {
         type: String,
         default: ''
     }
