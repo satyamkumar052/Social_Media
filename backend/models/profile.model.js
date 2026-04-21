@@ -20,15 +20,15 @@ const educationSchema = new mongoose.Schema({
 const workSchema = new mongoose.Schema ({
     company: {
         type: String,
-        default:""
+        default: ""
     },
     position: {
         type: String,
-        default:""
+        default: ""
     },
     years: {
         type: String,
-        default:"",
+        default: "",
     },
 });
 
