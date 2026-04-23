@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from "./styles.module.css"
 import { useRouter } from 'next/router'
 import { useDispatch, useSelector } from 'react-redux';
 import { reset } from '@/config/redux/reducer/authReducer';
+import { getPendingConnectionRequests } from '@/config/redux/action/authAction';
 
 function Navbar() {
 
@@ -11,6 +12,16 @@ function Navbar() {
     const dispatch = useDispatch();
 
     const authState = useSelector((state) => state.auth);
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+
+        if (token) {
+            dispatch(getPendingConnectionRequests({ token }));
+        }
+    }, [dispatch]);
+
+    const pendingCount = authState.pendingConnectionRequests?.length || 0;
 
     return (
         <div className={styles.container}>
@@ -23,9 +34,13 @@ function Navbar() {
 
                 <div className={styles.navbarOptionContainer}>
 
-
                     {authState.profileFetched && <div>
-                        <div style={{ display: "flex", gap: "1.25rem" }}>
+                        <div style={{ display: "flex", gap: "1.25rem", alignItems: "center" }}>
+                            <div className={styles.notificationButton} onClick={() => router.push("/my_connections")}>
+                                Requests
+                                {pendingCount > 0 && <span className={styles.badge}>{pendingCount}</span>}
+                            </div>
+
                             <p onClick={() => {
                                 router.push("/profile");
                             }} style={{ fontWeight: "bold", cursor: "pointer" }}>Profile</p>
