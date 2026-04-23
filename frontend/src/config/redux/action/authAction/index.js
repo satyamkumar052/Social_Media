@@ -154,7 +154,24 @@ export const getMyConnectionsRequests = createAsyncThunk(
     }
 )
 
+export const getPendingConnectionRequests = createAsyncThunk(
+    "user/getPendingConnectionRequests",
+    async(user, thunkAPI) => {
 
+        try {
+            const response = await clientServer.get("/user/get_pending_connection_requests", {
+                params: {
+                    token: user.token
+                }
+            });
+
+            return thunkAPI.fulfillWithValue(response.data.pendingRequests);
+        } catch (err) {
+            return thunkAPI.rejectWithValue(err.response?.data?.message || err.message);
+        }
+
+    }
+)
 
 // accept connection
 export const AcceptConnection = createAsyncThunk(
@@ -170,6 +187,7 @@ export const AcceptConnection = createAsyncThunk(
 
             thunkAPI.dispatch(getConnectionRequest({token:localStorage.getItem("token")}));
             thunkAPI.dispatch(getMyConnectionsRequests({token:localStorage.getItem("token")}));
+            thunkAPI.dispatch(getPendingConnectionRequests({token:localStorage.getItem("token")}));
 
             return thunkAPI.fulfillWithValue(response.data);
             
