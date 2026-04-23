@@ -31,3 +31,31 @@
     user-select: none;
     cursor: pointer;
 }
+
+.notificationButton {
+    position: relative;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 0.4rem 0.6rem;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+.notificationButton:hover {
+    background-color: #f3f2ef;
+}
+
+.badge {
+    position: absolute;
+    top: -4px;
+    right: -8px;
+    background-color: #cc0000;
+    color: white;
+    font-size: 0.65rem;
+    font-weight: bold;
+    padding: 0.1rem 0.35rem;
+    border-radius: 10px;
+    min-width: 14px;
+    text-align: center;
+    border: 1.5px solid white;
+}
