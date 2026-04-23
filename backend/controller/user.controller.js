@@ -360,6 +360,29 @@ export const getMyConnectionsRequests = async (req, res) => {
 
 };
 
+export const getPendingConnectionRequests = async (req, res) => {
+
+    const { token } = req.query;
+
+    try {
+
+        const user = await User.findOne({ token });
+
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        const pendingRequests = await ConnectionRequest.find({ connectionId: user._id, status_accepted: null })
+            .populate("userId", "name username email profilePicture");
+
+        res.json({ pendingRequests });
+
+    } catch (err) {
+        return res.status(500).json({ message: err.message });
+    }
+
+};
+
 
 
 export const whatAreMyConnections = async (req, res) => {
