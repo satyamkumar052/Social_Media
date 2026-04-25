@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     height: 90svh;
-    background-color: snow;
+    background-color: rgb(238, 236, 236);
 }
 
 .cardContainer {
@@ -13,7 +13,7 @@
     overflow: hidden;
     width: 70vw;
     background: white;
-    box-shadow: 10px 10px 15px rgb(173, 173, 173);
+    box-shadow: 10px 10px 15px rgb(171, 170, 170);
 }
 
 .cardContainer_left {
@@ -52,7 +52,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #0D6EFD;
+    background-color: #116df8;
     padding-block: 0.6rem;
     color: white;
     cursor: pointer;
@@ -67,7 +67,7 @@
 .cardContainer_right {
     display: flex;
     flex:0.4;
-    background-color: #00488bcd;
+    background-color: #02498bcd;
     justify-content: center;
     align-items: center;
     color: #fff;
@@ -85,7 +85,7 @@
     padding-block: 0.8rem;
     outline: none;
     border-radius: 10px;
-    border: 1px solid rgb(134, 132, 132);
+    border: 1px solid rgb(129, 126, 126);
     width: 100%;
 }
 
