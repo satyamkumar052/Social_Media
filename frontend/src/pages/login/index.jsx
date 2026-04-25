@@ -64,8 +64,8 @@ function login() {
                             <input onChange={(e) => setName(e.target.value)} className={styles.inputField} type="text" placeholder='Name' />
                         </div>}
 
-                        <input onChange={(e) => setEmailAddress(e.target.value)} className={styles.inputField} type="text" placeholder='Email' />
-                        <input onChange={(e) => setPassword(e.target.value)} className={styles.inputField} type="text" placeholder='Password' />
+                        <input onChange={(e) => setEmailAddress(e.target.value)} className={styles.inputField} type="email" placeholder='Email' />
+                        <input onChange={(e) => setPassword(e.target.value)} className={styles.inputField} type="password" placeholder='Password' />
                         <div onClick={() => {
                             if(userLoginMethod) {
                                 handlelogin();
