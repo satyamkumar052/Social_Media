@@ -27,6 +27,10 @@ app.use("/", PostRouter);
 
 const PORT = process.env.PORT || 8080;
 
+app.get("/health", (_, res) => {
+    res.status(200).json({ ok: true, service: "backend" });
+});
+
 app.listen(PORT, () => {
     console.log(`Server running on ${PORT}`);
     start();
